@@ -9,14 +9,14 @@ class Bank_Account:
     def deposite(self,amount):
         if amount>=0:
             self.balance += amount
-            self.transactions.append('Deposite',amount,datetime.now().strftime('%Y-%m-%d %H"%M:%S'))
+            self.transactions.append(('Deposite',amount,datetime.now().strftime('%Y-%m-%d %H"%M:%S')))
             print(f"Deposite {amount} has been successfully!.")
         return 'amount can not be negative'
     
     def withdraw(self,amount):
         if amount>=0 and self.balance>=amount:
             self.balance -= amount
-            self.transactions.append("Withdraw",amount,datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+            self.transactions.append(("Withdraw",amount,datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
             print(f"Withdraw {amount} has been withdraw successfully!.")
         return 'Insufficient amount'
 
@@ -25,8 +25,7 @@ class Bank_Account:
         return self.balance
     
     def show_transaction_history(self):
-        for amount in self.transactions:
-            for t in amount:
+        for t in self.transactions:
                 print(f"{t[0]} of {t[1]} on {t[2]}")
     
 if __name__=="__main__":
